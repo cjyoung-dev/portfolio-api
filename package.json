@@ -18,9 +18,12 @@
   },
   "license": "MIT",
   "author": "Carson Young <carson.young18@gmail.com>",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
   }
 }
