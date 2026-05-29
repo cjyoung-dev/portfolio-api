@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-api",
+  "version": "1.0.0",
+  "description": "Serverless API backend for my developer portfolio",
+  "keywords": [
+    "portfolio",
+    "api",
+    "serverless",
+    "typescript"
+  ],
+  "homepage": "https://github.com/cjyoung-dev/portfolio-api#readme",
+  "bugs": {
+    "url": "https://github.com/cjyoung-dev/portfolio-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjyoung-dev/portfolio-api.git"
+  },
+  "license": "MIT",
+  "author": "Carson Young <carson.young18@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
