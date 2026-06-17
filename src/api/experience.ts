@@ -2,10 +2,13 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import { sendSuccess, sendError } from "../lib/response";
 import { experience } from "../data";
 import { ExperienceType } from "../types";
+import { runCors } from "../lib/cors";
 
 const VALID_TYPES: ExperienceType[] = ["work", "education"];
 
-export default function handler(req: VercelRequest, res: VercelResponse): void {
+export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
+  await runCors(req, res);
+
   const { type } = req.query;
 
   if (type) {

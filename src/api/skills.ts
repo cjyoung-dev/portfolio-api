@@ -2,6 +2,7 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import { sendSuccess, sendError } from "../lib/response";
 import { skills } from "../data";
 import { SkillCategory } from "../types";
+import { runCors } from "../lib/cors";
 
 const VALID_CATEGORIES: SkillCategory[] = [
   "language",
@@ -12,7 +13,9 @@ const VALID_CATEGORIES: SkillCategory[] = [
   "other",
 ];
 
-export default function handler(req: VercelRequest, res: VercelResponse): void {
+export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
+  await runCors(req, res);
+
   const { category } = req.query;
 
   if (category) {
