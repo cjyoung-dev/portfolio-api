@@ -1,4 +1,6 @@
 name: Production
 variables:
   - name: baseUrl
-    value: https://your-vercel-domain.vercel.app
+    value: https://portfolio-fea680zp3-cjyoung.vercel.app/
+  - name: apiVersion
+    value: v1

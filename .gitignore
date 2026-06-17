@@ -145,3 +145,4 @@ vite.config.ts.timestamp-*
 
 #Bruno
 bruno/environments/
+.env*
