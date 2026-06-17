@@ -6,8 +6,8 @@ import { runCors } from "../lib/cors";
 
 const VALID_STATUSES: ProjectStatus[] = ["active", "complete", "archived"];
 
-export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
-  await runCors(req, res);
+export default function handler(req: VercelRequest, res: VercelResponse): void {
+  if (runCors(req, res)) return;
 
   const { status } = req.query;
 

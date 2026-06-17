@@ -1,5 +1,4 @@
-import Cors from "cors";
-import { VercelResponse, VercelRequest } from "@vercel/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const ALLOWED_ORIGINS = [
   "http://localhost:5173",
@@ -7,16 +6,20 @@ const ALLOWED_ORIGINS = [
   "https://cjyoung-dev.github.io",
 ];
 
-const corsMiddleware = Cors({
-  origin: ALLOWED_ORIGINS,
-  methods: ["GET", "OPTIONS"],
-});
+export function runCors(req: VercelRequest, res: VercelResponse): boolean {
+  const origin = req.headers.origin;
 
-export function runCors(req: VercelRequest, res: VercelResponse): Promise<void> {
-  return new Promise((resolve, reject) => {
-    corsMiddleware(req as any, res as any, (result) => {
-      if (result instanceof Error) reject(result);
-      resolve();
-    });
-  });
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.status(204).end();
+    return true;
+  }
+
+  return false;
 }
