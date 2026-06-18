@@ -6,6 +6,9 @@ info:
 http:
   method: GET
   url: "{{baseUrl}}/api/profile"
+  headers:
+    - name: Origin
+      value: http://localhost:5173/
   auth: inherit
 
 runtime:
